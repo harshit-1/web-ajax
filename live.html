@@ -1,0 +1,486 @@
+<html>
+ <head>
+<link rel="stylesheet" href="gallery.css">
+<script type="text/javascript" src="jquery-3.2.0.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+		jQuery('.photo-thumbnails .thumbnail').click(function() {
+		jQuery('.photo-thumbnails .thumbnail').removeClass('current');
+		jQuery(this).addClass('current');
+		var path = jQuery(this).find('img').attr('src');
+		jQuery('#big-photo img').attr('src', path);
+	});
+});
+</script>
+ <style>
+ body { 
+background: url('image3.jpg') no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+ 
+ .nav {
+  margin-top: 0px;
+  
+}
+
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+#footer {
+    border-top: 5px solid #CDB380;
+    border-bottom:5px solid #CDB380;
+    background: black none repeat scroll 0% 0%;
+    padding-top: 30px;
+    margin-top: 60px;
+    clear: both;
+    color: #AAA;
+    display: block;
+    position:absolute;
+    top:550px;
+width:100%;
+left:1px;
+    
+}
+
+#footer .widgettitle {
+    margin: 0px;
+    padding: 0px 0px 15px;
+    border-bottom: medium none;
+}
+#footer h4 {
+    color: #FFF;
+}
+
+#footer ul {
+    list-style: outside none none;
+}
+
+#footer li {
+    padding: 7px 0px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+    margin: 0px;
+}
+
+#footer li a {
+    color: #DDD;
+}
+
+#sub-floor {
+    color: #AAA;
+    background: #031634 none repeat scroll 0% 0%;
+    padding: 10px 0px;
+}
+.nav-tabs {
+    margin-bottom: 15px;
+    background-color:black;
+}
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+.middle {
+    transition: .7s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 33%;
+    transform: translate(-50%, -50%);
+    
+}
+.text {
+    background-color: #4CAF50;
+    color: WHITE;
+    font-size: 100px;
+    padding: 16px 32px;
+}
+
+#div1{
+	  border:solid 1px blue;
+	  width:25%;
+	  }
+
+ </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="font-awesome.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$('#myModal').modal('show');
+</script>
+<script>
+ var xhr;
+ var count=0;
+	function fetch()
+	{
+	 xhr = new XMLHttpRequest();
+	 xhr.open("GET","up.php?count="+count++,true);
+	 xhr.onreadystatechange = refresh;
+	 xhr.send();
+ }
+	 
+	 function refresh()
+	 {
+	  
+	  if(xhr.readyState == 4 && xhr.status ==200)
+	  {
+	   content = xhr.responseText.split(":");
+	   document.getElementById("div1").innerHTML = content[0];
+           res = content[1].split("-");
+           document.getElementById("n1").innerHTML = res[0];
+           document.getElementById("f1").innerHTML = res[1];
+           document.getElementById("n2").innerHTML = res[2];
+           document.getElementById("f2").innerHTML = res[3];
+           document.getElementById("n3").innerHTML = res[4];
+           document.getElementById("f3").innerHTML = res[5];
+setTimeout(fetch,300);	
+	    }
+		
+	     } 
+</script>
+ </head>
+ 
+ <body onload="fetch()">
+
+<center> <img src="logo2.png" class="img-rounded" id="image1" alt="Cinque Terre" width="500" height="110" right="130px" style="background:url('logo.png')no-repeat;" ></center><br>
+
+ <nav class="navbar navbar-default col-md-10 col-md-offset-1 centered nav" style="align:center;background-image:linear-gradient(90deg, black, black);">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--<a class="navbar-brand nav" href="#">TENNIS LIVE</a>-->
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="http://localhost/Project1/home.html"> HOME<span class="sr-only">(current)</span></a></li>
+        <li class=active><a href="http://localhost/Project1/live.html">LIVE</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MATCHES<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">PRESENT MATCHES</a></li>
+            <li><a href="#">FUTURE FIXTURES</a></li>
+            <li><a href="#">PAST MATCHES</a></li>
+            <!--<li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>-->
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" method="GET">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="PLAYER" id="food" onkeyup="obj.getFood()">
+        </div>
+        <input type="button" value="SEARCH"/>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://localhost/Project1/gallery1.html">GALLERY</a></li>
+        <li class="dropdown">
+          <a href="#"data-toggle="modal" data-target="#myModal" style="background-color:black;">REGISTER</a>
+          <!--<ul class="dropdown-menu">
+            <li><a href="#">LOGIN</a></li>
+            <li><a href="#">SIGN UP</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>-->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="col-md-8">
+
+ </div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:black;color:#85af90">
+                <button type="button" style="background-color:black;color:#85af90"class="close" data-dismiss="modal" aria-hidden="true">
+                    close</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    LOGIN/REGISTRATION</h4>
+            </div>
+            <div class="modal-body" style="background-color:black;color:#85af90">
+                <div class="row">
+                    <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;background-color:black;color:#85af90"">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" style="background-color:white;">
+                            <li class="active"><a href="#Login" data-toggle="tab">LOGIN</a></li>
+                            <li><a href="#Registration" data-toggle="tab">REGISTER</a></li>
+                        </ul>
+                        <!-- Tab panes --><br>	
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email1" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                                        <a href="javascript:;">Forgot your password?</a>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="Registration">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <select class="form-control">
+                                                    <option>Mr.</option>
+                                                    <option>Ms.</option>
+                                                    <option>Mrs.</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile" class="col-sm-2 control-label">
+                                        Mobile</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="mobile" placeholder="Mobile" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="password" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            Save & Continue</button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            Cancel</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="OR" class="hidden-xs">
+                            OR</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row text-center sign-with">
+                            <div class="col-md-12">
+                                <h3>
+                                    Sign in with</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="btn-group btn-group-justified">
+                                    <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">
+                                        Google</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<center><table border="1px solid black" style="background-color:black;color:white;position:absolute;left:400px;top:200px"><tr><td><div id="container"></div></td></tr></table></center><br>
+<!--<div class="container">
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading" style="padding:1px;background-color:#011507;">
+                <h3 class="panel-title" style="color:#c3a0a0;"></h3>-->
+                
+        <!--</div>
+    </div>
+</div>--><br/>
+<br/>
+<br/>
+<center>
+<table class="table" style="background-color:#14562e;width:50%;height:120px;right:250px">
+                <thead>
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="PLAYER" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="SET1" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="SET2" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="SET3" disabled></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>RAFAEL NADAL</td>
+                        <td id="n1">0</td>
+                        <td id="n2">0</td>
+                        <td id="n3">0</td>
+                    </tr>
+                    <tr>
+                        <td>ROGER FEDERER</td>
+                        <td id="f1">0</td>
+                        <td id="f2">0</td>
+                        <td id="f3">0</td>
+                    </tr>
+                </tbody>
+            </table></center>
+<br>
+<br>
+<center><div id="div1" class="panel panel-success panel-heading" style="width:700px;height:400px;background-color:white;font-color:black;font-family:myFirstFont;align:left;border-radius:10px;border-size:5px;font-size:20px;opacity:0.5;">MATCH BEGINS NOW.....................................</div></center>
+<footer id="footer" class="clearfix" style="position:absolute;top:800px;">
+      <div id="footer-widgets">
+
+        <div class="container">
+
+        <div id="footer-wrapper">
+
+          <div class="row">
+            <div class="col-sm-6 col-md-2">
+              <div id="meta-3" class="widget widgetFooter widget_meta">
+              <h4 class="widgettitle">PAGES:</h4>
+              <ul>
+    		  <li><a href="#">HOME</a></li>
+			  <li><a href="">LIVE</a></li>
+			  <li><a href="#">CONTACT US</a></li>
+             </ul>
+</div>      </div> <!-- end widget1 -->
+
+            <div class="col-sm-6 col-md-2">
+              		<div id="recent-posts-3" class="widget widgetFooter widget_recent_entries">
+                    <h4 class="widgettitle">FOLLOW US ON:</h4>
+                    <ul>
+					<li>
+				     <a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i> Facebook</a>
+					</li>
+					<li>
+				      <a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i> Twitter</a>
+					</li>
+					<li>
+				      <a href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube"></i> Youtube</a>
+				   </li>
+				</ul>
+		</div>            </div> <!-- end widget1 -->
+
+            <div class="col-sm-6 col-md-4">
+              <div id="meta-4" class="widget widgetFooter widget_meta">
+              <h4 class="widgettitle">SUBSCRIBE</h4>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">E-mail :</span>
+                  <input class="form-control" placeholder="Email-Id" type="text">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon">Phone  :</span>
+                  <input class="form-control" placeholder="900000000" type="text">
+                   <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">SUBSCRIBE</button>
+                  </span>
+                </div>
+              </div>
+
+
+              </div>
+             </div> <!-- end widget1 -->
+
+            <div class="col-sm-6 col-md-4">
+              <div id="search-3" class="widget widgetFooter widget_search"><h4 class="widgettitle"></h4>
+
+                <div class="form-group">
+                                <!--<label class="control-label">Tennis Live</label>-->
+                                <div class="input-group">
+                                  <!--<span class="input-group-addon">Keyword :</span>
+                                  <input class="form-control" placeholder="Keyword for search ..." type="text">
+                                   <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">Search !</button>
+                                  </span>-->
+				<center><img src="logo2.png" width="350px" height="100px" /></center>
+                                </div>
+                              </div>
+
+                </div>            </div> <!-- end widget1 -->
+
+          </div> <!-- end .row -->
+
+        </div> <!-- end #footer-wrapper -->
+
+        </div> <!-- end .container -->
+      </div> <!-- end #footer-widgets -->
+
+      <!--<div id="sub-floor">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 copyright">
+             Copy right for Faploo © 2015
+            </div>
+            <div class="col-md-4 col-md-offset-4 attribution">
+             Developer by  <a target="_blank" href="#">Faploo team</a> .
+            </div>
+          </div> <!-- end .row -->
+        <!--</div>
+      </div>-->
+
+    </footer>
+ </body>
+</html>

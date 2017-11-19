@@ -1,0 +1,47 @@
+<html>
+ <head>
+ <style>
+	div{
+	  border:solid 1px blue;
+	  width:25%;
+	  }
+ </style>
+ <script type="text/javascript">
+    var xhr,xhr2;
+	function getScores()
+	{
+	 xhr = new XMLHttpRequest();
+	 xhr.open("GET","update.php",true);
+	 xhr.send();
+	 xhr2 = new XMLHttpRequest();
+	 xhr2.onreadystatechange = showScores;
+	 xhr2.open("GET","scores.txt",true);
+	 xhr2.send();
+	 }
+	 
+	 function showScores()
+	 {
+	  if(xhr2.readyState == 4 && xhr2.status ==200)
+	  {
+	   content = xhr2.responseText.split(";");
+	   document.getElementById("one").innerHTML = content[0];
+	   document.getElementById("two").innerHTML = content[1];
+	   document.getElementById("three").innerHTML = content[2];
+	   document.getElementById("upd").innerHTML+="*";
+	    }
+		setTimeout(getScores,1000);
+	     } 
+ 
+ </script>
+ </head>
+ <body onload="getScores()">
+   <div id="main">
+    <div id="upd">updating</div>
+    <div id="one">0</div>
+    <div id="two">0</div>
+    <div id="three">0</div>
+   </div>
+ </body>
+</html>
+  
+ 

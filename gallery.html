@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JQUERY basics</title>
+<link rel="stylesheet" href="gallery.css">
+<script type="text/javascript" src="jquery-3.2.0.min.js">
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+		jQuery('.photo-thumbnails .thumbnail').click(function() {
+		jQuery('.photo-thumbnails .thumbnail').removeClass('current');
+		jQuery(this).addClass('current');
+		var path = jQuery(this).find('img').attr('src');
+		jQuery('#big-photo img').attr('src', path);
+	});
+});
+</script>
+</head>
+<body>
+
+<div class="gallery-photos clearfix">
+  <div class="photo-thumbnails">
+    <div class="thumbnail current">
+      <div class="thumbnail-inner"> <img src="1.jpg" alt="" /> </div>
+    </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="2.jpg" alt="" /> </div>
+    </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="3.jpg" alt="" /> </div>
+    </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="4.jpg" alt="" /> </div>
+    </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="5.jpg" alt="" /> </div>
+    </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="6.jpg" alt="" /> </div>
+    </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="7.jpg" alt="" /> </div>
+    </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="8.jpg" alt="" /> </div>
+	  </div>
+    <div class="thumbnail">
+      <div class="thumbnail-inner"> <img src="9.jpg" alt="" /> </div>
+    </div>
+  </div>
+  <div id="big-photo" class="big-photo"> <img src="1.jpg" alt="" /> </div>
+</div>
+</body>
+</html>

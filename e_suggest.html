@@ -1,0 +1,127 @@
+<html>
+	<head>
+		<style>
+				div{
+						border:1px solid black;
+				
+				}
+				.notfound{
+				background-color:red;
+				}
+				.found{
+				background-color:blue;
+				}
+				.result{
+				border:none;
+				}
+				.result:hover{
+				background-color:green;
+				}
+		</style>
+		<script>
+		var Suggest=function(){
+		temp=this;		
+		this.timer=null
+		this.search=null
+		this.xhr=new XMLHttpRequest();
+		this.container = null;
+		
+		this.getFood=function(){	
+			if(this.timer){			
+				clearTimeout(this.timer);
+			}		
+			this.timer=setTimeout(this.sendTerm,1000);
+		
+		}
+		this.sendTerm=function(){
+		
+			temp.search=document.getElementById("food");
+			temp.container=document.getElementById("container");
+			console.log(temp.search.value);
+			temp.container.innerHTML =" ";
+			
+		if(temp.search.value==""){			
+			console.log("no string");
+			}
+			else
+			{
+			url = "http://localhost/mytasks/task10/suggest.php?term="+temp.search.value;
+			
+			if(localStorage.getItem(url))
+			{
+			var r =JSON.parse(localStorage.getItem(url));
+			temp.search.className="found";
+			temp.populateFood(r);
+			}
+			else{
+			temp.xhr.onreadystatechange = temp.fetchFood;
+			temp.xhr.open("GET",url,true);
+			temp.xhr.send();
+			
+			}
+			}
+		}
+		
+		this.fetchFood = function() {
+		//this will be temp.xhr
+		if(this.readyState==4 && this.status==200){
+		
+		var res = JSON.parse(this.responseText);
+		
+		if(res.length==0){
+		temp.search.className="notfound";
+		}
+		
+		localStorage.setItem(this.responseURL,this.responseText)
+		temp.populateFood(res);
+		
+		}
+		
+		}
+				
+		this.populateFood = function(r){
+			for(var i=0;i<r.length;i++)
+			{
+			d = document.createElement("div");
+			d.innerHTML = r[i];
+			d.className="result";
+			d.onclick=temp.setFood;
+			temp.container.appendChild(d);
+			}
+		}
+		
+		
+		this.setFood=function(e){
+		
+		temp.search.value= e.target.innerHTML;
+		temp.container.style.display = "none";
+		
+		}
+
+		}				
+				obj=new Suggest();
+			     
+		</script>
+	</head>
+	<body>
+		<table border="0" cellpadding="0">
+			<tr>
+				<td> Name:   </td>
+				<td><input type="text" id="person"/>	</td>
+			
+			</tr>
+			<tr>
+				<td> Food:   </td>
+				<td><input type="text" id="food" onkeyup="obj.getFood()"/>	</td>
+			
+			</tr>
+			<tr>
+					<td></td>
+					<td><div id="container" ></div></td>
+			
+			</tr>
+		
+		</table>
+	</body>
+
+</html>
